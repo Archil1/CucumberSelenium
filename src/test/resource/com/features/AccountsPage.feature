@@ -13,9 +13,10 @@ Then page title should be "My account - My Shop"
 Scenario: Accounts Section count
 Given user is on Accounts page 
 Then user gets accounts section
-|Add my first address|
-|Order history and details|
-|My credit slips|
-|My addresses|
-|My personal information|
-And accounts section count should be 5
+|ADD MY FIRST ADDRESS|
+|ORDER HISTORY AND DETAILS|
+|MY CREDIT SLIPS|
+|MY ADDRESSES|
+|MY PERSONAL INFORMATION|
+|Home|
+And accounts section count should be 6
