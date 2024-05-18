@@ -29,7 +29,8 @@ public class AccountsPageSteps {
 
 	@Given("user is on Accounts page")
 	public void user_is_on_accounts_page() {
-		accountsPage.getAccountsPageTitle();
+		String title=accountsPage.getAccountsPageTitle();
+		System.out.println(title);
 	}
 
 	@Then("user gets accounts section")
