@@ -11,7 +11,7 @@ public class LoginSteps {
 
 	private LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
 	private static String title;
-	
+
 	@Given("user is on login page")
 	public void user_is_on_login_page() {
 		DriverFactory.getDriver()
@@ -50,7 +50,7 @@ public class LoginSteps {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@When("user enters username {string}")
@@ -79,7 +79,5 @@ public class LoginSteps {
 	public void user_clicks_on_login_button() {
 		loginPage.clickOnLogin();
 	}
-
-	
 
 }
