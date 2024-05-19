@@ -55,7 +55,7 @@
 			<version>5.7.0</version>
 		</dependency>
 
-	
+
 		<dependency>
 			<groupId>tech.grasshopper</groupId>
 			<artifactId>extentreports-cucumber7-adapter</artifactId>
@@ -93,17 +93,12 @@
 	</dependencies>
 
 	<build>
-		<pluginManagement><!-- lock down plugins versions to avoid using Maven
-			defaults (may be moved to parent pom) -->
+		<pluginManagement>
 			<plugins>
-				<!-- clean lifecycle, see
-				https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
 				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
 					<version>3.1.0</version>
 				</plugin>
-				<!-- default lifecycle, jar packaging: see
-				https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
 				<plugin>
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>3.0.2</version>
@@ -112,10 +107,7 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.8.0</version>
 				</plugin>
-				<plugin>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.22.1</version>
-				</plugin>
+
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>3.0.2</version>
@@ -140,37 +132,39 @@
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.2.5</version>
+					<configuration>
+						<includes>**/MyTestRunners.java</includes>
+						<parallel>methods</parallel>
+						<threadCount>4</threadCount>
+						<useUnlimitedThreads>false</useUnlimitedThreads>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-failsafe-plugin</artifactId>
-					<version>3.0.0-M3</version>
+					<version>3.2.5</version>
 					<executions>
 						<execution>
 							<goals>
 								<goal>integration-test</goal>
 							</goals>
-							<configuration> <!--UNCOMMENT - To add any exclusions if
-								required <excludes>
-									<exclude>**/*IT*.java</exclude>-->
+							<configuration>
 								<includes>
-									<!--UNCOMMENT BELOW LINE - To execute feature files
-								with a single runner-->
-								 <include>
-										**/MyTestRunner.java</include> UNCOMMENT
-									BELOW LINE - To execute feature files with
-									multiple runners <include>**/*Runner.java</include>
+									<include>**/MyTestRunners.java</include>
 								</includes>
-								<!--UNCOMMENT BELOW 3 LINES - To execute using
-								parallel or combination option-->
 								<parallel>methods</parallel>
 								<threadCount>
 									4</threadCount>
-								<perCoreThreadCount>true</perCoreThreadCount>
-								<!--UNCOMMENT BELOW 3 LINES - To execute using
-								forking or combination option-->
+								<!--<perCoreThreadCount>true</perCoreThreadCount>
+								UNCOMMENT BELOW 3 LINES - To execute using
+								forking or combination option
 								<forkCount>2</forkCount>
 								<reuseForks>
 									true</reuseForks>
 								<reportsDirectory>
-									${project.build.directory}/failsafe-reports_${surefire.forkNumber}</reportsDirectory>
+									${project.build.directory}/failsafe-reports_${surefire.forkNumber}</reportsDirectory>-->
 							</configuration>
 						</execution>
 					</executions>
